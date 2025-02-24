@@ -19,8 +19,9 @@ resource "aws_db_instance" "default" {
   # Enable deletion protection (to prevent accidental deletion)
   deletion_protection = false
 
-  # Skip final snapshot
-  #skip_final_snapshot = true
+  # Subnet Group
+  db_subnet_group_name = aws_db_subnet_group.sub-grp.name
+
 }
 
 # IAM Role for RDS Enhanced Monitoring
