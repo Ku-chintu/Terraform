@@ -8,6 +8,10 @@ resource "aws_instance" "project" {
     }
     subnet_id = aws_subnet.public-subnet.id
     vpc_security_group_ids = [aws_security_group.project-sg.id]
+    associate_public_ip_address = true  # ✅ Assigns a public IP
 
   
 }
+
+###################### we need to assign public ip in the main.tf #################
+############  associate_public_ip_address = true  # ✅ Assigns a public IP ##################
