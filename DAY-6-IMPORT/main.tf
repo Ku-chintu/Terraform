@@ -6,3 +6,6 @@ resource "aws_instance" "import" {
       Name = "import-ec2"
     }  
 }
+
+######################### import command in console #######################
+######################### terraform import aws_instance.my_instance i-0abcd1234efgh5678 ###############
