@@ -6,8 +6,9 @@ resource "aws_instance" "project" {
     tags = {
       Name = "custom-vpc-nat-ec2"
     }
-    subnet_id = aws_subnet.private-subnet.id
+    subnet_id = aws_subnet.public-subnet.id
     vpc_security_group_ids = [aws_security_group.project-sg.id]
+    associate_public_ip_address = true
 
   
 }
