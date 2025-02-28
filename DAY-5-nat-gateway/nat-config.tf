@@ -28,7 +28,7 @@ resource "aws_subnet" "public-subnet" {
 ############ private subnet ###################
 resource "aws_subnet" "private-subnet" {
     vpc_id = aws_vpc.project.id
-    availability_zone = "ap-south-1a"
+    availability_zone = "ap-south-1b"
     cidr_block = "10.0.1.0/24"
     tags = {
       Name = "private-subnet"
@@ -57,9 +57,10 @@ resource "aws_route_table_association" "public-rt" {
   
 }
 ################# security group ##################
+
 resource "aws_security_group" "project-sg" {
   name        = "project-sg"
-  description = "Allow SSH and HTTP traffic"
+  description = "Allow SSH traffic"
   vpc_id      = aws_vpc.project.id
 
   #### Inbound Rules ######
@@ -68,16 +69,16 @@ resource "aws_security_group" "project-sg" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]  ###### Allow SSH from anywhere #########
+    
   }
-
   ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  ######### Allow HTTP from anywhere #######
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ########### Outbound Rules ###################
+   ########### Outbound Rules ###################
   egress {
     from_port   = 0
     to_port     = 0
