@@ -8,4 +8,4 @@ resource "aws_instance" "import" {
 }
 
 ######################### import command in console #######################
-######################### terraform import aws_instance.my_instance i-0abcd1234efgh5678 ###############
+######################### terraform import aws_instance.import i-0abcd1234efgh5678 ###############
