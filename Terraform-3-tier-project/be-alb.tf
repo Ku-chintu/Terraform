@@ -1,10 +1,10 @@
 ############## Application Load Balancer for BE ################
 resource "aws_lb" "be_alb" {
   name               = "be-alb"
-  internal           = true
+  internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.project_sg.id]
-  subnets            = [aws_subnet.fe_subnet_1.id, aws_subnet.fe_subnet_2.id]
+  subnets            = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
 
   tags = {
     Name = "be-alb"
