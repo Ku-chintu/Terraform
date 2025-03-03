@@ -8,6 +8,7 @@ resource "aws_db_instance" "default" {
   password             = "admin12345"
   parameter_group_name = "default.mysql8.0"
   skip_final_snapshot = true
+  availability_zone = "ap-south-1a"
 
  # Enable performance insights
   performance_insights_enabled = true
@@ -47,10 +48,10 @@ resource "aws_iam_role_policy_attachment" "rds_monitoring_attach" {
 
 
 resource "aws_db_subnet_group" "sub-grp" {
-  name       = "mycutsubnet"
+  name       = "cust-rds-subnet"
   subnet_ids = ["subnet-01d201f5ed79b3b60", "subnet-01aba8e5f0d8ab968"]
 
   tags = {
-    Name = "My DB subnet group"
+    Name = "cust-DB-Subnet"
   }
 }
