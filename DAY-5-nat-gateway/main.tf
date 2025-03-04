@@ -15,7 +15,7 @@ resource "aws_instance" "public-ec2" {
 resource "aws_instance" "private-ec2" {
     ami = "ami-0c50b6f7dc3701ddd"
     instance_type = "t2.micro"
-    availability_zone = "ap-south-1b"
+    availability_zone = "ap-south-1a"
     tags = {
       Name = "private-ec2"
     }
